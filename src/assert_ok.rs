@@ -1,4 +1,4 @@
-/// Asserts that expression returns `Ok(T)` variant.
+/// Asserts that expression returns [`Ok(T)`] variant.
 ///
 /// ## Examples
 ///
@@ -19,6 +19,8 @@
 /// assert_ok!(res);  // Will panic
 /// # }
 /// ```
+///
+/// [`Ok(T)`]: https://doc.rust-lang.org/core/result/enum.Result.html#variant.Ok
 #[macro_export]
 macro_rules! assert_ok {
     ($cond:expr) => {
@@ -42,7 +44,9 @@ macro_rules! assert_ok {
     };
 }
 
-/// Asserts that expression returns `Ok(T)` variant in runtime.
+/// Asserts that expression returns [`Ok(T)`] variant in runtime.
+///
+/// [`Ok(T)`]: https://doc.rust-lang.org/core/result/enum.Result.html#variant.Ok
 #[macro_export]
 macro_rules! debug_assert_ok {
     ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_ok!($($arg)*); })

@@ -1,4 +1,4 @@
-/// Asserts that expression returns `Err(E)` variant.
+/// Asserts that expression returns [`Err(E)`] variant.
 ///
 /// ## Examples
 ///
@@ -19,6 +19,8 @@
 /// assert_err!(res);  // Will panic
 /// # }
 /// ```
+///
+/// [`Err(E)`]: https://doc.rust-lang.org/core/result/enum.Result.html#variant.Err
 #[macro_export]
 macro_rules! assert_err {
     ($cond:expr) => {
@@ -42,7 +44,9 @@ macro_rules! assert_err {
     };
 }
 
-/// Asserts that expression returns `Err(E)` variant in runtime.
+/// Asserts that expression returns [`Err(E)`] variant in runtime.
+///
+/// [`Err(E)`]: https://doc.rust-lang.org/core/result/enum.Result.html#variant.Err
 #[macro_export]
 macro_rules! debug_assert_err {
     ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_err!($($arg)*); })

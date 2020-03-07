@@ -1,4 +1,4 @@
-/// Asserts that expression returns `Some(T)` variant.
+/// Asserts that expression returns [`Some(T)`] variant.
 ///
 /// ## Examples
 ///
@@ -19,6 +19,8 @@
 /// assert_some!(maybe);  // Will panic
 /// # }
 /// ```
+///
+/// [`Some(T)`]: https://doc.rust-lang.org/core/option/enum.Option.html#variant.Some
 #[macro_export]
 macro_rules! assert_some {
     ($cond:expr) => {
@@ -42,7 +44,9 @@ macro_rules! assert_some {
     };
 }
 
-/// Asserts that expression returns `Some(T)` variant in runtime.
+/// Asserts that expression returns [`Some(T)`] variant in runtime.
+///
+/// [`Some(T)`]: https://doc.rust-lang.org/core/option/enum.Option.html#variant.Some
 #[macro_export]
 macro_rules! debug_assert_some {
     ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_some!($($arg)*); })

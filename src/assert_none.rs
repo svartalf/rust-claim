@@ -20,7 +20,7 @@
 /// # }
 /// ```
 ///
-/// [`None`]: https://doc.rust-lang.org/stable/std/option/enum.Option.html#variant.None
+/// [`None`]: https://doc.rust-lang.org/core/option/enum.Option.html#variant.None
 #[macro_export]
 macro_rules! assert_none {
     ($cond:expr) => {
@@ -44,7 +44,9 @@ macro_rules! assert_none {
     };
 }
 
-/// Asserts that expression returns `None` variant in runtime.
+/// Asserts that expression returns [`None`] variant in runtime.
+///
+/// [`None`]: https://doc.rust-lang.org/core/option/enum.Option.html#variant.None
 #[macro_export]
 macro_rules! debug_assert_none {
     ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_none!($($arg)*); })
