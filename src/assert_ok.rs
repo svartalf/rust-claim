@@ -4,16 +4,20 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
+/// # fn main() {
 /// let res: Result<i32, ()> = Ok(1);
 ///
 /// assert_ok!(res);
+/// # }
 /// ```
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
+/// # fn main() {
 /// let res = Err(());
 ///
 /// assert_ok!(res);  // Will panic
+/// # }
 /// ```
 #[macro_export]
 macro_rules! assert_ok {

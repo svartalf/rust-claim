@@ -6,13 +6,17 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
+/// # fn main() {
 /// assert_ge!(2, 1);
 /// assert_ge!(5, 5);
+/// # }
 /// ```
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
+/// # fn main() {
 /// assert_ge!(5, 6);  // Will panic
+/// # }
 /// ```
 #[macro_export]
 macro_rules! assert_ge {

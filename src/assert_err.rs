@@ -4,16 +4,20 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
+/// # fn main() {
 /// let res: Result<i32, ()> = Err(());
 ///
 /// assert_err!(res);
+/// # }
 /// ```
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
+/// # fn main() {
 /// let res: Result<i32, ()> = Ok(42);
 ///
 /// assert_err!(res);  // Will panic
+/// # }
 /// ```
 #[macro_export]
 macro_rules! assert_err {
@@ -33,9 +37,7 @@ macro_rules! assert_err {
             t @ ::core::result::Result::Ok(..) => {
                 panic!("assertion failed, expected Err(..), got {:?}: {}", t, ::core::format_args!($($arg)+));
             },
-            ::core::result::Result::Err(e) => {
-                e
-            }
+            ::core::result::Result::Err(e) => e,
         }
     };
 }
