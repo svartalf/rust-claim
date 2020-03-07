@@ -5,12 +5,14 @@
 /// ## Examples
 ///
 /// ```rust
-/// claim::assert_lt!(1, 2);
+/// # #[macro_use] extern crate claim;
+/// assert_lt!(1, 2);
 /// ```
 ///
 /// ```rust,should_panic
-/// claim::assert_lt!(5, 5);  // Will panic
-/// claim::assert_le!(6, 5);
+/// # #[macro_use] extern crate claim;
+/// assert_lt!(5, 5);  // Will panic
+/// assert_le!(6, 5);
 /// ```
 #[macro_export]
 macro_rules! assert_lt {

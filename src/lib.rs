@@ -2,6 +2,7 @@
 
 #![doc(html_root_url = "https://docs.rs/claim/0.1.0")]
 #![no_std]
+#![allow(unknown_lints)]
 #![forbid(
     unused,
     unused_imports,

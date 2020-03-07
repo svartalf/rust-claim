@@ -3,15 +3,17 @@
 /// ## Examples
 ///
 /// ```rust
+/// # #[macro_use] extern crate claim;
 /// let res: Result<i32, ()> = Err(());
 ///
-/// claim::assert_err!(res);
+/// assert_err!(res);
 /// ```
 ///
 /// ```rust,should_panic
+/// # #[macro_use] extern crate claim;
 /// let res: Result<i32, ()> = Ok(42);
 ///
-/// claim::assert_err!(res);  // Will panic
+/// assert_err!(res);  // Will panic
 /// ```
 #[macro_export]
 macro_rules! assert_err {
