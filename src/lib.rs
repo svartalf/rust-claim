@@ -32,3 +32,12 @@ mod assert_lt;
 mod assert_none;
 mod assert_ok;
 mod assert_some;
+
+#[cfg(has_task_poll)]
+mod assert_pending;
+#[cfg(has_task_poll)]
+mod assert_ready;
+#[cfg(has_task_poll)]
+mod assert_ready_err;
+#[cfg(has_task_poll)]
+mod assert_ready_ok;
