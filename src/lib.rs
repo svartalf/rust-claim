@@ -24,4 +24,8 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
 
 mod assert_err;
+mod assert_ge;
+mod assert_gt;
+mod assert_le;
+mod assert_lt;
 mod assert_ok;
