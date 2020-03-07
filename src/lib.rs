@@ -29,4 +29,6 @@ mod assert_ge;
 mod assert_gt;
 mod assert_le;
 mod assert_lt;
+mod assert_none;
 mod assert_ok;
+mod assert_some;
