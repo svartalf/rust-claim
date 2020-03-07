@@ -1,13 +1,19 @@
 [package]
 name = "claim"
 description = "Assertion macros"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 license = "Apache-2.0 OR MIT"
 categories = ["development-tools", "development-tools::testing", "no-std"]
 keywords = ["assert", "test", "testing"]
+repository = "https://github.com/svartalf/rust-claim"
+readme = "README.md"
 build = "build.rs"
+
+[badges]
+maintenance = { status = "actively-developed" }
+github-actions = { repository = "svartalf/rust-claim", workflow = "Continuous integration" }
 
 [build-dependencies]
 autocfg = "~1.0"

@@ -2,8 +2,12 @@
 //!
 //! This crate provides additional assert macros to make testing a bit easier.
 //!
-//! Same to [`std`] macros, all macros in this crate has the [`debug_*`](#macros) counterparts,
+//! Same to [`core`]/[`std`] macros, all macros in this crate has the [`debug_*`](#macros) counterparts,
 //! which are not enabled in release builds by default.
+//!
+//! ## No-std
+//!
+//! This crate is `no-std` by default.
 //!
 //! ## Comparison
 //!
@@ -40,6 +44,7 @@
 //! * [`assert_ready_pending`]
 //! * [`assert_ready_eq`]
 //!
+//! [`core`]: https://doc.rust-lang.org/stable/core/#macros
 //! [`std`]: https://doc.rust-lang.org/stable/std/#macros
 //! [`Option`]: https://doc.rust-lang.org/core/option/enum.Option.html
 //! [`Result`]: https://doc.rust-lang.org/core/result/enum.Result.html
