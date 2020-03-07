@@ -1,0 +1,8 @@
+[package]
+name = "claim"
+description = "Reserved for future use"
+version = "0.0.0"
+authors = ["svartalf <self@svartalf.info>"]
+edition = "2018"
+
+[dependencies]
