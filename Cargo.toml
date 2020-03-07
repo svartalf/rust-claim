@@ -1,9 +1,10 @@
 [package]
 name = "claim"
-description = "Reserved for future use"
+description = "Assertion macros"
 version = "0.0.0"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 license = "Apache-2.0 OR MIT"
 
-[dependencies]
+[build-dependencies]
+autocfg = "~1.0"
