@@ -1,3 +1,27 @@
+#![doc(html_root_url = "https://docs.rs/claim/0.1.0")]
+#![no_std]
+#![allow(unknown_lints)]
+#![forbid(
+    unused,
+    unused_imports,
+    unused_features,
+    bare_trait_objects,
+    future_incompatible,
+    missing_debug_implementations,
+    missing_docs,
+    nonstandard_style,
+    dead_code,
+    deprecated,
+    intra_doc_link_resolution_failure,
+    trivial_casts,
+    trivial_numeric_casts,
+    unused_extern_crates,
+    unused_import_braces,
+    unused_results,
+    unsafe_code
+)]
+#![cfg_attr(docsrs, feature(doc_cfg))]
+
 //! Assertion macros.
 //!
 //! This crate provides additional assert macros to make testing a bit easier.
@@ -11,7 +35,7 @@
 //!
 //! ## Comparison
 //!
-//! Rich comparision, similar to [`assert_eq`]:
+//! Rich comparison, similar to [`assert_eq`] or [`assert_ne`]:
 //!
 //! | Macro         | Operator |
 //! | ------------- | :------: |
@@ -62,30 +86,6 @@
 //! [`assert_ready_err`]: ./macro.assert_ready_err.html
 //! [`assert_ready_pending`]: ./macro.assert_ready_pending.html
 //! [`assert_ready_eq`]: ./macro.assert_ready_eq.html
-
-#![doc(html_root_url = "https://docs.rs/claim/0.1.0")]
-#![no_std]
-#![allow(unknown_lints)]
-#![forbid(
-    unused,
-    unused_imports,
-    unused_features,
-    bare_trait_objects,
-    future_incompatible,
-    missing_debug_implementations,
-    missing_docs,
-    nonstandard_style,
-    dead_code,
-    deprecated,
-    intra_doc_link_resolution_failure,
-    trivial_casts,
-    trivial_numeric_casts,
-    unused_extern_crates,
-    unused_import_braces,
-    unused_results,
-    unsafe_code
-)]
-#![cfg_attr(docsrs, feature(doc_cfg))]
 
 mod assert_err;
 mod assert_ge;

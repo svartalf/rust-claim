@@ -1,6 +1,6 @@
 # claim
 
-> Assertion macros toolkit for Rust
+> Missing assertion macros for Rust
 
 [![Latest Version](https://img.shields.io/crates/v/claim.svg)](https://crates.io/crates/claim)
 [![Latest Version](https://docs.rs/claim/badge.svg)](https://docs.rs/claim)
@@ -8,14 +8,20 @@
 ![Apache 2.0 OR MIT licensed](https://img.shields.io/badge/license-Apache2.0%2FMIT-blue.svg)
 ![no-std compatible](https://img.shields.io/badge/no--std-compatible-brightgreen)
 
-This crate provides assertion macros for easier testing and debugging.
+This crate provides assertion macros for easier testing:
+
+1. `<`, `<=`, `>` and `>=` operations: `assert_gt!(42, 5)`
+2. `Option` type: `assert_some!(value)`
+2. `Result` type: `assert_ok!(result)`
+2. `Poll` type: `assert_ready!(future)`
 
 ## Installation
 
-Add this to your `Cargo.toml`
+Add the following to your `Cargo.toml` manifest
+to use this crate for tests, examples and benchmarks:
 
 ```toml
-[dependencies]
+[dev-dependencies]
 claim = "0.1"
 ```
 

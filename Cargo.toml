@@ -1,7 +1,7 @@
 [package]
 name = "claim"
-description = "Assertion macros"
-version = "0.1.0"
+description = "Assertion macros for testing"
+version = "0.1.1"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 license = "Apache-2.0 OR MIT"

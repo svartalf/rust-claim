@@ -1,7 +1,17 @@
 /// Asserts that left expression returns [`Poll::Ready(Ok(T))`] variant
-/// and it value of `T` type equals to the right expression.
+/// and its value of `T` type equals to the right expression.
 ///
 /// This macro is available for Rust 1.36+.
+///
+/// ## Uses
+///
+/// Assertions are always checked in both debug and release builds, and cannot be disabled.
+/// See [`debug_assert_ready_eq!`] for assertions that are not enabled in release builds by default.
+///
+/// ## Custom messages
+///
+/// This macro has a second form, where a custom panic message can be provided
+/// with or without arguments for formatting. See [`std::fmt`] for syntax for this form.
 ///
 /// ## Examples
 ///
@@ -28,7 +38,7 @@
 /// # }
 /// ```
 ///
-/// Both `Poll::Ready(Err(..))` and `Poll::Pending` variants will cause panic:
+/// Both `Poll::Ready(Err(..))` and [`Poll::Pending`] variants will cause panic:
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
@@ -51,6 +61,9 @@
 /// ```
 ///
 /// [`Poll::Ready(Ok(T))`]: https://doc.rust-lang.org/core/task/enum.Poll.html#variant.Ready
+/// [`Poll::Pending`]: https://doc.rust-lang.org/core/task/enum.Poll.html#variant.Pending
+/// [`std::fmt`]: https://doc.rust-lang.org/std/fmt/index.html
+/// [`debug_assert_ready!`]: ./macro.debug_assert_ready.html
 #[macro_export]
 macro_rules! assert_ready_eq {
     ($cond:expr, $expected:expr,) => {
@@ -81,9 +94,19 @@ macro_rules! assert_ready_eq {
 }
 
 /// Asserts that left expression returns [`Poll::Ready(Ok(T))`] variant
-/// and it value of `T` type equals to the right expression in runtime.
+/// and its value of `T` type equals to the right expression in runtime.
+///
+/// Like [`assert_ready_eq!`], this macro also has a second version,
+/// where a custom panic message can be provided.
+///
+/// ## Uses
+///
+/// See [`debug_assert!`] documentation for possible use cases.
+/// The same applies to this macro.
 ///
 /// [`Poll::Ready(Ok(T))`]: https://doc.rust-lang.org/core/task/enum.Poll.html#variant.Ready
+/// [`debug_assert!`]: https://doc.rust-lang.org/std/macro.debug_assert.html
+/// [`assert_ready_eq!`]: ./macro.assert_ready_eq.html
 #[macro_export]
 macro_rules! debug_assert_ready_eq {
     ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_ready_eq!($($arg)*); })
