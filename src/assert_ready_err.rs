@@ -80,7 +80,7 @@ macro_rules! assert_ready_err {
         match $cond {
             ::core::task::Poll::Ready(Err(e)) => e,
             ok_or_pending => {
-                panic!("assertion failed, expected Ready(Err(..)), got {:?}: {}", ok_or_pending, ::core::format_args!($($arg)+));
+                panic!("assertion failed, expected Ready(Err(..)), got {:?}: {}", ok_or_pending, format_args!($($arg)+));
             }
         }
     };

@@ -54,7 +54,7 @@ macro_rules! assert_err {
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
             t @ ::core::result::Result::Ok(..) => {
-                panic!("assertion failed, expected Err(..), got {:?}: {}", t, ::core::format_args!($($arg)+));
+                panic!("assertion failed, expected Err(..), got {:?}: {}", t, format_args!($($arg)+));
             },
             ::core::result::Result::Err(e) => e,
         }

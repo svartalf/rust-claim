@@ -67,7 +67,7 @@ macro_rules! assert_ok {
         match $cond {
             ::core::result::Result::Ok(t) => t,
             e @ ::core::result::Result::Err(..) => {
-                panic!("assertion failed, expected Ok(..), got {:?}: {}", e, ::core::format_args!($($arg)+));
+                panic!("assertion failed, expected Ok(..), got {:?}: {}", e, format_args!($($arg)+));
             }
         }
     };

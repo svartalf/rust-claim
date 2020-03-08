@@ -73,7 +73,7 @@ macro_rules! assert_pending {
         match $cond {
             p @ ::core::task::Poll::Pending => p,
             r @ ::core::task::Poll::Ready(..) => {
-                panic!("assertion failed, expected Pending, got {:?}", ::core::format_args!($($arg)+));
+                panic!("assertion failed, expected Pending, got {:?}", format_args!($($arg)+));
             }
         }
     };

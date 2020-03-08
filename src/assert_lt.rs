@@ -65,7 +65,7 @@ macro_rules! assert_lt {
                     // noticeable slow down.
                     panic!(r#"assertion failed: `(left < right)`
     left: `{:?}`,
-    right: `{:?}`: {}"#, &*left_val, &*right_val, ::core::format_args!($($arg)+))
+    right: `{:?}`: {}"#, &*left_val, &*right_val, format_args!($($arg)+))
                 }
             }
         }

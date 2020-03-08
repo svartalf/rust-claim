@@ -55,7 +55,7 @@ macro_rules! assert_some {
         match $cond {
             ::core::option::Option::Some(t) => t,
             ::core::option::Option::None => {
-                panic!("assertion failed, expected Some(..), got None: {}", ::core::format_args!($($arg)+));
+                panic!("assertion failed, expected Some(..), got None: {}", format_args!($($arg)+));
             }
         }
     };
