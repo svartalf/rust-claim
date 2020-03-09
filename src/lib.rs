@@ -1,6 +1,6 @@
-#![doc(html_root_url = "https://docs.rs/claim/0.1.0")]
 #![no_std]
-#![allow(unknown_lints)]
+#![doc(html_root_url = "https://docs.rs/claim/0.2.0")]
+#![allow(unknown_lints, unused_extern_crates)]
 #![forbid(
     unused,
     unused_imports,
@@ -15,50 +15,48 @@
     intra_doc_link_resolution_failure,
     trivial_casts,
     trivial_numeric_casts,
-    unused_extern_crates,
     unused_import_braces,
     unused_results,
     unsafe_code
 )]
-#![cfg_attr(docsrs, feature(doc_cfg))]
 
 //! Assertion macros.
 //!
 //! This crate provides additional assert macros to make testing a bit easier.
 //!
-//! Same to [`core`]/[`std`] macros, all macros in this crate has the [`debug_*`](#macros) counterparts,
-//! which are not enabled in release builds by default.
+//! ## `#![no_std]` support
 //!
-//! ## No-std
+//! `claim` is a `no_std` crate.
 //!
-//! This crate is `no-std` by default.
+//! ## Available macros
 //!
-//! ## Comparison
+//! Note that same to [`core`]/[`std`] macros,
+//! all macros in this crate has the [`debug_*`](#macros) counterparts.
 //!
-//! Rich comparison, similar to [`assert_eq`] or [`assert_ne`]:
+//! ### Comparison
 //!
-//! | Macro         | Operator |
-//! | ------------- | :------: |
-//! | [`assert_ge`] | `>=`     |
-//! | [`assert_gt`] | `>`      |
-//! | [`assert_le`] | `<=`     |
-//! | [`assert_lt`] | `<`      |
+//! Assertions similar to [`assert_eq`] or [`assert_ne`]:
 //!
-//! ## `Result` macros
+//! * [`assert_ge`]
+//! * [`assert_gt`]
+//! * [`assert_le`]
+//! * [`assert_lt`]
+//!
+//! ### `Result` macros
 //!
 //! Assertions for [`Result`] variants:
 //!
 //! * [`assert_ok`]
 //! * [`assert_err`]
 //!
-//! ## `Option` macros
+//! ### `Option` macros
 //!
 //! Assertions for [`Option`] variants:
 //!
 //! * [`assert_some`]
 //! * [`assert_none`]
 //!
-//! ## `Poll` macros
+//! ### `Poll` macros
 //!
 //! Assertions for [`Poll`] variants:
 //!
@@ -94,7 +92,9 @@ mod assert_le;
 mod assert_lt;
 mod assert_none;
 mod assert_ok;
+mod assert_ok_eq;
 mod assert_some;
+mod assert_some_eq;
 
 #[cfg(has_task_poll)]
 mod assert_pending;

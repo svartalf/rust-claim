@@ -16,7 +16,8 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # #[cfg(feature = "std")] extern crate std as core;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Ready(Err(()));
 ///
@@ -28,7 +29,7 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, String>> = Poll::Ready(Err("Something went wrong".to_string()));
 ///
@@ -41,7 +42,7 @@
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Ready(Ok(42));
 ///
@@ -51,7 +52,7 @@
 
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Pending;
 ///
@@ -70,7 +71,7 @@ macro_rules! assert_ready_err {
     };
     ($cond:expr) => {
         match $cond {
-            ::core::task::Poll::Ready(Err(e)) => e,
+            core::task::Poll::Ready(Err(e)) => e,
             ok_or_pending => {
                 panic!("assertion failed, expected Ready(Err(..)), got {:?}", ok_or_pending);
             }
@@ -78,7 +79,7 @@ macro_rules! assert_ready_err {
     };
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
-            ::core::task::Poll::Ready(Err(e)) => e,
+            core::task::Poll::Ready(Err(e)) => e,
             ok_or_pending => {
                 panic!("assertion failed, expected Ready(Err(..)), got {:?}: {}", ok_or_pending, format_args!($($arg)+));
             }
@@ -101,5 +102,5 @@ macro_rules! assert_ready_err {
 /// [`assert_ready_err!`]: ./macro.assert_ready_err.html
 #[macro_export]
 macro_rules! debug_assert_ready_err {
-    ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_ready_err!($($arg)*); })
+    ($($arg:tt)*) => (if core::cfg!(debug_assertions) { $crate::assert_ready_err!($($arg)*); })
 }

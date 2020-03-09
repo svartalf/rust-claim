@@ -83,5 +83,5 @@ macro_rules! assert_ge {
 /// [`assert_ge!`]: ./macro.assert_ge.html
 #[macro_export]
 macro_rules! debug_assert_ge {
-    ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_ge!($($arg)*); })
+    ($($arg:tt)*) => (if cfg!(debug_assertions) { $crate::assert_ge!($($arg)*); })
 }

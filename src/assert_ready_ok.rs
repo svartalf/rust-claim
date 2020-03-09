@@ -16,7 +16,7 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Ready(Ok(42));
 ///
@@ -28,7 +28,7 @@
 ///
 /// ```rust
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Ready(Ok(42));
 ///
@@ -41,7 +41,7 @@
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Ready(Err(()));
 ///
@@ -51,7 +51,7 @@
 ///
 /// ```rust,should_panic
 /// # #[macro_use] extern crate claim;
-/// # use core::task::Poll;
+/// # use std::task::Poll;
 /// # fn main() {
 /// let res: Poll<Result<i32, ()>> = Poll::Pending;
 ///
@@ -70,7 +70,7 @@ macro_rules! assert_ready_ok {
     };
     ($cond:expr) => {
         match $cond {
-            ::core::task::Poll::Ready(Ok(t)) => t,
+            core::task::Poll::Ready(Ok(t)) => t,
             err_or_pending => {
                 panic!("assertion failed, expected Ready(Ok(..)), got {:?}", err_or_pending);
             }
@@ -78,7 +78,7 @@ macro_rules! assert_ready_ok {
     };
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
-            ::core::task::Poll::Ready(Ok(t)) => t,
+            core::task::Poll::Ready(Ok(t)) => t,
             err_or_pending => {
                 panic!("assertion failed, expected Ready(Ok(..)), got {:?}: {}", err_or_pending, format_args!($($arg)+));
             }
@@ -101,5 +101,5 @@ macro_rules! assert_ready_ok {
 /// [`assert_ready_ok!`]: ./macro.assert_ready_ok.html
 #[macro_export]
 macro_rules! debug_assert_ready_ok {
-    ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_ready_ok!($($arg)*); })
+    ($($arg:tt)*) => (if core::cfg!(debug_assertions) { $crate::assert_ready_ok!($($arg)*); })
 }

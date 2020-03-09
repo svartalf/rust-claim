@@ -45,18 +45,18 @@ macro_rules! assert_err {
     };
     ($cond:expr) => {
         match $cond {
-            t @ ::core::result::Result::Ok(..) => {
+            t @ Ok(..) => {
                 panic!("assertion failed, expected Err(..), got {:?}", t);
             },
-            ::core::result::Result::Err(e) => e,
+            Err(e) => e,
         }
     };
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
-            t @ ::core::result::Result::Ok(..) => {
+            t @ Ok(..) => {
                 panic!("assertion failed, expected Err(..), got {:?}: {}", t, format_args!($($arg)+));
             },
-            ::core::result::Result::Err(e) => e,
+            Err(e) => e,
         }
     };
 }
@@ -76,5 +76,5 @@ macro_rules! assert_err {
 /// [`assert_err!`]: ./macro.assert_err.html
 #[macro_export]
 macro_rules! debug_assert_err {
-    ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_err!($($arg)*); })
+    ($($arg:tt)*) => (if cfg!(debug_assertions) { $crate::assert_err!($($arg)*); })
 }

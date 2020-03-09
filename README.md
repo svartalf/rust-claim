@@ -7,13 +7,14 @@
 [![Build Status](https://github.com/svartalf/rust-claim/workflows/Continuous%20integration/badge.svg)](https://github.com/svartalf/rust-claim/actions)
 ![Apache 2.0 OR MIT licensed](https://img.shields.io/badge/license-Apache2.0%2FMIT-blue.svg)
 ![no-std compatible](https://img.shields.io/badge/no--std-compatible-brightgreen)
+![Version compatibility](https://img.shields.io/badge/Rust-1.0%2B-blue)
 
-This crate provides assertion macros for easier testing:
+This crate provides assertion macros that are missing in the Rust `libcore` / `libstd`:
 
-1. `<`, `<=`, `>` and `>=` operations: `assert_gt!(42, 5)`
-2. `Option` type: `assert_some!(value)`
-2. `Result` type: `assert_ok!(result)`
-2. `Poll` type: `assert_ready!(future)`
+ * Comparison: `assert_ge`, `assert_gt` `assert_le`, and `assert_lt`
+ * `Result`: `assert_ok`, `assert_err`, and `assert_ok_eq`
+ * `Option`: `assert_some`, `assert_none`, and `assert_some_eq`
+ * `Poll`: `assert_pending`, `assert_ready`, `assert_ready_ok`, `assert_ready_err`, and `assert_ready_eq`
 
 ## Installation
 
@@ -22,7 +23,7 @@ to use this crate for tests, examples and benchmarks:
 
 ```toml
 [dev-dependencies]
-claim = "0.1"
+claim = "0.2"
 ```
 
 ## Usage

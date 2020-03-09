@@ -46,16 +46,16 @@ macro_rules! assert_none {
     };
     ($cond:expr) => {
         match $cond {
-            n @ ::core::option::Option::None => n,
-            t @ ::core::option::Option::Some(..) => {
+            n @ None => n,
+            t @ Some(..) => {
                 panic!("assertion failed, expected None, got {:?}", t);
             }
         }
     };
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
-            n @ ::core::option::Option::None => n,
-            t @ ::core::option::Option::Some(..) => {
+            n @ None => n,
+            t @ Some(..) => {
                 panic!("assertion failed, expected None, got {:?}: {}", t, format_args!($($arg)+));
             }
         }
@@ -77,5 +77,5 @@ macro_rules! assert_none {
 /// [`assert_none!`]: ./macro.assert_none.html
 #[macro_export]
 macro_rules! debug_assert_none {
-    ($($arg:tt)*) => (if ::core::cfg!(debug_assertions) { $crate::assert_none!($($arg)*); })
+    ($($arg:tt)*) => (if cfg!(debug_assertions) { $crate::assert_none!($($arg)*); })
 }
