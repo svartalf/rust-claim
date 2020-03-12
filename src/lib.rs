@@ -1,5 +1,5 @@
 #![no_std]
-#![doc(html_root_url = "https://docs.rs/claim/0.2.0")]
+#![doc(html_root_url = "https://docs.rs/claim/0.3.0")]
 #![allow(unknown_lints, unused_extern_crates)]
 #![forbid(
     unused,
@@ -42,12 +42,17 @@
 //! * [`assert_le`]
 //! * [`assert_lt`]
 //!
+//! ### Matching
+//!
+//! * [`assert_matches`]
+//!
 //! ### `Result` macros
 //!
 //! Assertions for [`Result`] variants:
 //!
 //! * [`assert_ok`]
 //! * [`assert_err`]
+//! * [`assert_ok_eq`]
 //!
 //! ### `Option` macros
 //!
@@ -55,6 +60,7 @@
 //!
 //! * [`assert_some`]
 //! * [`assert_none`]
+//! * [`assert_some_eq`]
 //!
 //! ### `Poll` macros
 //!
@@ -77,13 +83,16 @@
 //! [`assert_lt`]: ./macro.assert_lt.html
 //! [`assert_some`]: ./macro.assert_some.html
 //! [`assert_none`]: ./macro.assert_none.html
+//! [`assert_some_eq`]: ./macro.assert_some_eq.html
 //! [`assert_ok`]: ./macro.assert_ok.html
 //! [`assert_err`]: ./macro.assert_err.html
+//! [`assert_ok_eq`]: ./macro.assert_ok_eq.html
 //! [`assert_ready`]: ./macro.assert_ready.html
 //! [`assert_ready_ok`]: ./macro.assert_ready_ok.html
 //! [`assert_ready_err`]: ./macro.assert_ready_err.html
 //! [`assert_ready_pending`]: ./macro.assert_ready_pending.html
 //! [`assert_ready_eq`]: ./macro.assert_ready_eq.html
+//! [`assert_matches`]: ./macro.assert_matches.html
 
 mod assert_err;
 mod assert_ge;
@@ -106,3 +115,6 @@ mod assert_ready_eq;
 mod assert_ready_err;
 #[cfg(has_task_poll)]
 mod assert_ready_ok;
+
+#[cfg(rustc_1_37)]
+mod assert_matches;

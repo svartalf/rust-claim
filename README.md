@@ -12,6 +12,7 @@
 This crate provides assertion macros that are missing in the Rust `libcore` / `libstd`:
 
  * Comparison: `assert_ge`, `assert_gt` `assert_le`, and `assert_lt`
+ * Matching: `assert_matches`
  * `Result`: `assert_ok`, `assert_err`, and `assert_ok_eq`
  * `Option`: `assert_some`, `assert_none`, and `assert_some_eq`
  * `Poll`: `assert_pending`, `assert_ready`, `assert_ready_ok`, `assert_ready_err`, and `assert_ready_eq`
@@ -23,7 +24,7 @@ to use this crate for tests, examples and benchmarks:
 
 ```toml
 [dev-dependencies]
-claim = "0.2"
+claim = "0.3"
 ```
 
 ## Usage
