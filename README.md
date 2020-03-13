@@ -11,7 +11,7 @@
 
 This crate provides assertion macros that are missing in the Rust `libcore` / `libstd`:
 
- * Comparison: `assert_ge`, `assert_gt` `assert_le`, and `assert_lt`
+ * Comparison: `assert_ge`, `assert_gt`, `assert_le`, and `assert_lt`
  * Matching: `assert_matches`
  * `Result`: `assert_ok`, `assert_err`, and `assert_ok_eq`
  * `Option`: `assert_some`, `assert_none`, and `assert_some_eq`

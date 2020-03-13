@@ -1,6 +1,6 @@
 /// Asserts that expression matches any of the given variants.
 ///
-/// This macro is available for Rust 1.37+.
+/// This macro is available for Rust 1.32+.
 ///
 /// It works exactly as [`std::matches!`] macro,
 /// except it panics if there is no match.

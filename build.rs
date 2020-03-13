@@ -7,5 +7,5 @@ fn main() {
 
     // Needed for `assert_matches!` and `?` macro repetition
     // See https://doc.rust-lang.org/edition-guide/rust-2018/macros/at-most-once.html
-    cfg.emit_rustc_version(1, 37);
+    cfg.emit_rustc_version(1, 32);
 }

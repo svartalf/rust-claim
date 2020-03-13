@@ -1,7 +1,8 @@
 #![no_std]
-#![doc(html_root_url = "https://docs.rs/claim/0.3.0")]
+#![doc(html_root_url = "https://docs.rs/claim/0.3.1")]
 #![allow(unknown_lints, unused_extern_crates)]
 #![forbid(
+    rust_2018_idioms,
     unused,
     unused_imports,
     unused_features,
@@ -26,7 +27,7 @@
 //!
 //! ## `#![no_std]` support
 //!
-//! `claim` is a `no_std` crate.
+//! `claim` can be used in a `no-std` environments too.
 //!
 //! ## Available macros
 //!
@@ -77,6 +78,8 @@
 //! [`Option`]: https://doc.rust-lang.org/core/option/enum.Option.html
 //! [`Result`]: https://doc.rust-lang.org/core/result/enum.Result.html
 //! [`Poll`]: https://doc.rust-lang.org/core/task/enum.Poll.html
+//! [`assert_eq`]: https://doc.rust-lang.org/std/macro.assert_eq.html
+//! [`assert_ne`]: https://doc.rust-lang.org/std/macro.assert_ne.html
 //! [`assert_ge`]: ./macro.assert_ge.html
 //! [`assert_gt`]: ./macro.assert_gt.html
 //! [`assert_le`]: ./macro.assert_le.html
@@ -116,5 +119,5 @@ mod assert_ready_err;
 #[cfg(has_task_poll)]
 mod assert_ready_ok;
 
-#[cfg(rustc_1_37)]
+#[cfg(rustc_1_32)]
 mod assert_matches;
