@@ -101,4 +101,14 @@ mod tests {
             maybe
         );
     }
+
+    #[test]
+    fn does_not_require_some_debug() {
+        enum Foo {
+            Bar,
+        }
+
+        let res: Option<Foo> = Some(Foo::Bar);
+        let _ = assert_some!(res);
+    }
 }
