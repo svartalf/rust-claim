@@ -45,16 +45,16 @@ macro_rules! assert_err {
     };
     ($cond:expr) => {
         match $cond {
-            t @ Ok(..) => {
-                panic!("assertion failed, expected Err(..), got {:?}", t);
+            Ok(t) => {
+                panic!("assertion failed, expected Err(..), got Ok({:?})", t);
             },
             Err(e) => e,
         }
     };
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
-            t @ Ok(..) => {
-                panic!("assertion failed, expected Err(..), got {:?}: {}", t, format_args!($($arg)+));
+            Ok(t) => {
+                panic!("assertion failed, expected Err(..), got Ok({:?}): {}", t, format_args!($($arg)+));
             },
             Err(e) => e,
         }
@@ -96,5 +96,15 @@ mod tests {
     fn custom_panic_message() {
         let res: Result<i32, ()> = Ok(42);
         assert_err!(res, "we are checking if there was an error with {:?}", res);
+    }
+
+    #[test]
+    fn does_not_require_err_debug() {
+        enum Foo {
+            Bar,
+        }
+
+        let res: Result<i32, Foo> = Err(Foo::Bar);
+        let _ = assert_err!(res);
     }
 }
