@@ -90,3 +90,23 @@ macro_rules! assert_ok {
 macro_rules! debug_assert_ok {
     ($($arg:tt)*) => (if cfg!(debug_assertions) { $crate::assert_ok!($($arg)*); })
 }
+
+#[cfg(test)]
+#[cfg(not(has_private_in_public_issue))]
+mod tests {
+    #[test]
+    #[should_panic(expected = "assertion failed, expected Ok(..), got Err(())")]
+    fn default_panic_message() {
+        let res = Err(());
+        assert_ok!(res);
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "assertion failed, expected Ok(..), got Err(()): Everything is good with Err(())"
+    )]
+    fn custom_panic_message() {
+        let res = Err(());
+        assert_ok!(res, "Everything is good with {:?}", res);
+    }
+}
