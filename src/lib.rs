@@ -13,7 +13,7 @@
     nonstandard_style,
     dead_code,
     deprecated,
-    intra_doc_link_resolution_failure,
+    broken_intra_doc_links,
     trivial_casts,
     trivial_numeric_casts,
     unused_import_braces,
