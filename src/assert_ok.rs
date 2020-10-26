@@ -58,16 +58,16 @@ macro_rules! assert_ok {
     ($cond:expr) => {
         match $cond {
             Ok(t) => t,
-            e @ Err(..) => {
-                panic!("assertion failed, expected Ok(..), got {:?}", e);
+            Err(e) => {
+                panic!("assertion failed, expected Ok(..), got Err({:?})", e);
             }
         }
     };
     ($cond:expr, $($arg:tt)+) => {
         match $cond {
             Ok(t) => t,
-            e @ Err(..) => {
-                panic!("assertion failed, expected Ok(..), got {:?}: {}", e, format_args!($($arg)+));
+            Err(e) => {
+                panic!("assertion failed, expected Ok(..), got Err({:?}): {}", e, format_args!($($arg)+));
             }
         }
     };
@@ -89,4 +89,34 @@ macro_rules! assert_ok {
 #[macro_export]
 macro_rules! debug_assert_ok {
     ($($arg:tt)*) => (if cfg!(debug_assertions) { $crate::assert_ok!($($arg)*); })
+}
+
+#[cfg(test)]
+#[cfg(not(has_private_in_public_issue))]
+mod tests {
+    #[test]
+    #[should_panic(expected = "assertion failed, expected Ok(..), got Err(())")]
+    fn default_panic_message() {
+        let res = Err(());
+        assert_ok!(res);
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "assertion failed, expected Ok(..), got Err(()): Everything is good with Err(())"
+    )]
+    fn custom_panic_message() {
+        let res = Err(());
+        assert_ok!(res, "Everything is good with {:?}", res);
+    }
+
+    #[test]
+    fn does_not_require_ok_debug() {
+        enum Foo {
+            Bar,
+        }
+
+        let res: Result<Foo, ()> = Ok(Foo::Bar);
+        let _ = assert_ok!(res);
+    }
 }

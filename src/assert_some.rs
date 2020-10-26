@@ -78,3 +78,37 @@ macro_rules! assert_some {
 macro_rules! debug_assert_some {
     ($($arg:tt)*) => (if core::cfg!(debug_assertions) { $crate::assert_some!($($arg)*); })
 }
+
+#[cfg(test)]
+#[cfg(not(has_private_in_public_issue))]
+mod tests {
+    #[test]
+    #[should_panic(expected = "assertion failed, expected Some(..), got None")]
+    fn default_panic_message() {
+        let maybe: Option<i32> = None;
+        let _ = assert_some!(maybe);
+    }
+
+    #[test]
+    #[should_panic(
+        expected = "assertion failed, expected Some(..), got None: we are checking if there was an error with None"
+    )]
+    fn custom_panic_message() {
+        let maybe: Option<i32> = None;
+        let _ = assert_some!(
+            maybe,
+            "we are checking if there was an error with {:?}",
+            maybe
+        );
+    }
+
+    #[test]
+    fn does_not_require_some_debug() {
+        enum Foo {
+            Bar,
+        }
+
+        let res: Option<Foo> = Some(Foo::Bar);
+        let _ = assert_some!(res);
+    }
+}
