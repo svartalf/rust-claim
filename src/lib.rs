@@ -119,5 +119,5 @@ mod assert_ready_err;
 #[cfg(has_task_poll)]
 mod assert_ready_ok;
 
-#[cfg(rustc_1_32)]
+#[cfg(rustc_1_26)]
 mod assert_matches;
