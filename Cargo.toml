@@ -3,7 +3,6 @@ name = "claim"
 description = "Assertion macros"
 version = "0.4.0"
 authors = ["svartalf <self@svartalf.info>"]
-edition = "2018"
 license = "Apache-2.0 OR MIT"
 categories = ["development-tools", "development-tools::testing", "no-std"]
 keywords = ["assert", "test", "testing"]
