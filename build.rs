@@ -5,6 +5,9 @@ fn main() {
     cfg.emit_path_cfg("core::task::Poll", "has_task_poll");
     cfg.emit_path_cfg("std::task::Poll", "has_task_poll");
 
+    // Needed to enable `#![no_std]` only on rustc versions that support it (rustc 1.6.0 and up).
+    cfg.emit_rustc_version(1, 6);
+
     // Needed for `assert_matches!` and `?` macro repetition
     // See https://doc.rust-lang.org/edition-guide/rust-2018/macros/at-most-once.html
     cfg.emit_rustc_version(1, 32);
