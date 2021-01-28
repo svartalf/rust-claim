@@ -10,16 +10,20 @@ jobs:
       fail-fast: false
       matrix:
         toolchain:
-          - 1.0.0  # minimum supported rust version
-          - 1.10.0  # old enough
+          - 1.0.0
+          - 1.6.0  # no-std was experimental
+          - 1.10.0
           - 1.15.0
           - 1.20.0
           - 1.25.0
-          - 1.30.0
+          - 1.30.0  # edition2018 was experimental
           - 1.31.0  # edition2018
           - 1.36.0
           - 1.37.0  # assert_matches! min compat version
+          - 1.40.0
+          - 1.45.0
           - stable
+          - beta
     steps:
       - uses: actions/checkout@v1
       - name: Install Rust toolchain
@@ -29,9 +33,7 @@ jobs:
           toolchain: ${{ matrix.toolchain }}
           override: true
       - name: Run tests
-        uses: actions-rs/cargo@v1
-        with:
-          command: test
+        run: cargo test
 
   lints:
     name: Lints
@@ -46,15 +48,9 @@ jobs:
           override: true
           components: rustfmt, clippy
       - name: Run rustfmt
-        uses: actions-rs/cargo@v1
-        with:
-          command: fmt
-          args:  --all -- --check
+        run: cargo fmt --all -- --check
       - name: Run clippy
-        uses: actions-rs/cargo@v1
-        with:
-          command: clippy
-          args: --all-targets --all-features -- -D warnings
+        run: cargo clippy --all-targets --all-features -- -D warnings
 
   no_std:
     runs-on: ubuntu-latest
@@ -67,12 +63,6 @@ jobs:
           toolchain: stable
           override: true
       - name: Install cargo-nono
-        uses: actions-rs/cargo@v1
-        with:
-          command: install
-          args: cargo-nono
+        run: cargo install cargo-nono
       - name: Check no_std
-        uses: actions-rs/cargo@v1
-        with:
-          command: nono
-          args: check
+        run: cargo nono check
