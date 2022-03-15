@@ -54,6 +54,7 @@
 //! * [`assert_ok`]
 //! * [`assert_err`]
 //! * [`assert_ok_eq`]
+//! * [`assert_err_eq`]
 //!
 //! ### `Option` macros
 //!
@@ -90,6 +91,7 @@
 //! [`assert_ok`]: ./macro.assert_ok.html
 //! [`assert_err`]: ./macro.assert_err.html
 //! [`assert_ok_eq`]: ./macro.assert_ok_eq.html
+//! [`assert_err_eq`]: ./macro.assert_err_eq.html
 //! [`assert_ready`]: ./macro.assert_ready.html
 //! [`assert_ready_ok`]: ./macro.assert_ready_ok.html
 //! [`assert_ready_err`]: ./macro.assert_ready_err.html
@@ -98,6 +100,7 @@
 //! [`assert_matches`]: ./macro.assert_matches.html
 
 mod assert_err;
+mod assert_err_eq;
 mod assert_ge;
 mod assert_gt;
 mod assert_le;
