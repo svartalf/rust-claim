@@ -99,8 +99,8 @@
 //! [`assert_ready_eq`]: ./macro.assert_ready_eq.html
 //! [`assert_matches`]: ./macro.assert_matches.html
 
-mod assert_err_eq;
 mod assert_err;
+mod assert_err_eq;
 mod assert_ge;
 mod assert_gt;
 mod assert_le;
