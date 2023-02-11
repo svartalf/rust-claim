@@ -17,4 +17,4 @@ maintenance = { status = "actively-developed" }
 github-actions = { repository = "svartalf/rust-claim", workflow = "Continuous integration" }
 
 [build-dependencies]
-autocfg = "~1.0"
+autocfg = "~1.1"
